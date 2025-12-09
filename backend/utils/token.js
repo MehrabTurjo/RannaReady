@@ -1,16 +1,12 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+import jwt from "jsonwebtoken"
 
-dotenv.config();    
-
-const genToken = async (userId) => {
-    // Implementation for generating token
-    try{
-        const token = await jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
-        return token;
+const genToken=async (userId) => {
+    try {
+        const token= jwt.sign({userId},process.env.JWT_SECRET,{expiresIn:"7d"})
+        return token
     } catch (error) {
-        console.log('Token generation failed', error);
+        console.log(error)
     }
 }
 
-export default genToken;
+export default genToken
